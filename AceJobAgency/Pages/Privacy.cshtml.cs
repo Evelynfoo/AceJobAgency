@@ -19,12 +19,12 @@ namespace AceJobAgency.Pages
 
         public IActionResult OnGet()
         {
-			/*if (string.IsNullOrEmpty(HttpContext.Session.GetString("AuthSession")))
+			if (string.IsNullOrEmpty(HttpContext.Session.GetString("AuthSession")))
 			{
 				HttpContext.Session.Remove("AuthSession");
 				signInManager.SignOutAsync();
 				HttpContext.Response.Redirect("Login");
-			}*/
+			}
 
 			return Page();
 		}
