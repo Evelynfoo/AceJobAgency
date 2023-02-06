@@ -1,0 +1,105 @@
+﻿@page
+@model AceJobAgency.Pages.errors.custom404Model
+@{
+    ViewData["title"] = "Page does not exists";
+}
+
+<div class="text-center">
+    <div id="notfound">
+        <div class="notfound">
+            <div class="notfound-404">
+                <h1 style="font-size: 150px; margin-bottom: 0px;">
+                    4<span>
+                        <img src="~/img/emoji.png" style="width: 90px;height: 90px;" />
+                    </span>4
+                </h1>
+            </div>
+            <h2>We couldn't find this page</h2>
+            <p>The page you are looking either doesn't exists or some issue has occurred.</p>
+        @*    <p>Please navigate back to <a href="https://www.nyp.edu.sg/">NYP Website</a></p>*@
+      @*      <button class="btn btn-primary" href="/Pages/Index">Back to Home Page</button>*@
+        </div>
+    </div>
+</div>
+
+<style>
+    .notfound .notfound-404 h1 > span {
+        display: inline-block;
+        -webkit-transform: scale(1.4);
+        -ms-transform: scale(1.4);
+        transform: scale(1.4);
+        z-index: -1;
+    }
+
+    
+     .notfound h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        margin-top:20px;
+        text-transform: uppercase;
+        color: #232323;
+      }
+
+      .notfound p {
+         font-family: 'Montserrat', sans-serif;
+         color: #787878;
+         font-weight: 300;
+        }
+</style>
+@*<style>
+
+
+
+
+    #notfound .notfound {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .notfound {
+        max-width: 520px;
+        width: 100%;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+
+
+    .notfound .notfound-404 h1 {
+       font-family: 'Montserrat', sans-serif;
+       font-size: 150px;
+       font-weight: 700;
+       margin: 0px;
+       color: #232323;
+     }
+
+     .notfound .notfound-404 h1 > span {
+       display: inline-block;
+       -webkit-transform: scale(1.4);
+       -ms-transform: scale(1.4);
+       transform: scale(1.4);
+       z-index: -1;
+      }
+
+     .notfound h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        margin: 0;
+        text-transform: uppercase;
+        color: #232323;
+      }
+
+      .notfound p {
+         font-family: 'Montserrat', sans-serif;
+         color: #787878;
+         font-weight: 300;
+        }
+
+    }
+</style>*@

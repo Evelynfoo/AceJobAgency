@@ -1,0 +1,93 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@inject IHttpContextAccessor contxt;
+@*
+<div class="text-center">
+    <h1 class="display-4">Welcome To Ace Job Agency </h1>
+</div>*@
+
+
+<div class="student-profile py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent text-center">
+                        <img class="profile_img" src="~/img/image1.png" alt="student dp">
+                        <h3>@Model.user.FirstName @Model.user.LastName</h3>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent border-0">
+                        <h3 class="mb-0">User Information</h3>
+                    </div>
+                    <div class="card-body pt-0">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">@Html.DisplayNameFor(model => model.user.Gender)</th>
+                                <td width="2%">:</td>
+                                <td>@Model.user.Gender</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">@Html.DisplayNameFor(model => model.user.NRIC)</th>
+                                <td width="2%">:</td>
+                                <td>@Model.user.NRIC</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">@Html.DisplayNameFor(model => model.user.Email)</th>
+                                <td width="2%">:</td>
+                                <td>@Model.user.Email</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">@Html.DisplayNameFor(model => model.user.DateOfBirth)</th>
+                                <td width="2%">:</td>
+                                <td>@Model.user.DateOfBirth.ToShortDateString()</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">@Html.DisplayNameFor(model => model.user.WhoAmI)</th>
+                                <td width="2%">:</td>
+                                <td>@Model.user.WhoAmI</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+             
+             
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .student-profile .card {
+        border-radius: 10px;
+    }
+
+        .student-profile .card .card-header .profile_img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 10px auto;
+            border: 10px solid #ccc;
+            border-radius: 50%;
+        }
+
+        .student-profile .card h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+    .student-profile .table th,
+    .student-profile .table td {
+        font-size: 20px;
+        padding: 5px 10px;
+        color: #000;
+    }
+</style>

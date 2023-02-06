@@ -1,0 +1,95 @@
+﻿@page
+@model AceJobAgency.Pages.LoginModel
+@{
+}
+@using AceJobAgency.GoogleRecaptcha;
+@using Microsoft.Extensions.Options
+@using Microsoft.Extensions.Configuration
+@inject IOptions<GoogleCaptchaConfig> GoogleCaptchaConfig
+
+<section>
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+
+            <div class="col-md-9 col-lg-4 ">
+                <img src="~/img/logo.png"
+                     class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-7  offset-xl-1">
+                <div class="card-body py-5 px-md-5">
+
+                    <div class="row d-flex justify-content-center">
+                        <h2 class="fw-bold mb-5">Login</h2>
+                        <form method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                        
+
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <label class="form-label" asp-for="LModel.Email">Email Address</label>
+                                <input type="text" asp-for="LModel.Email" class="form-control" placeholder="Enter a valid email address" />
+                                <span asp-validation-for="LModel.Email" class="text-danger"></span>
+                            </div>
+
+
+                            <!-- Password input -->
+                      
+                            <div class="form-outline mb-4">
+                                <label class="form-label" asp-for="LModel.Password">Password</label>
+                                <input type="password" asp-for="LModel.Password" class="form-control" id="Input-Password" placeholder="Enter password" />
+                                <span asp-validation-for="LModel.Password" class="text-danger"></span>
+                                <input type="checkbox" class="form-check-input" onclick="myFunction()"> Show Password
+                            </div>
+                          
+                            <!-- Checkbox -->
+                            <div class="form-check mb-4">
+                                <input type="checkbox" asp-for="LModel.RememberMe" class="form-check-input  me-2" />
+                                <label class="form-check-label" asp-for="LModel.RememberMe">Remember Me?</label>
+                             
+                            </div>
+                            <input asp-for="LModel.Token" id="LModel_Token" type="hidden" />
+                            
+
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary  btn-block mb-4">Login</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <script src="https://www.google.com/recaptcha/api.js?render=@GoogleCaptchaConfig.Value.SiteKey"></script>
+    <script>
+
+        grecaptcha.ready(function () {
+            grecaptcha.execute('@GoogleCaptchaConfig.Value.SiteKey', { action: 'submit' }).then(function (token) {
+                console.log(token);
+                document.getElementById("LModel_Token").value = token;
+            });
+        });
+        function myFunction() {
+            var x = document.getElementById("Input-Password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+    <style>
+        form i {
+            margin-left: -30px;
+            cursor: pointer;
+        }
+    </style>

@@ -1,0 +1,141 @@
+﻿@page
+@model AceJobAgency.Pages.AdminModel
+@{
+}
+
+
+<section>
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+
+            <div class="col-md-9 col-lg-4 ">
+                <img src="~/img/logo.png"
+                     class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-7  offset-xl-1">
+                <div class="card-body py-5 px-md-5">
+
+                    <div class="row d-flex justify-content-center">
+                        <h2 class="fw-bold mb-5">Sign up now</h2>
+                            <form method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <!-- Name input -->
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label" asp-for="AModel.FirstName">First Name</label>
+                                        <input type="Text" asp-for="AModel.FirstName" class="form-control" />
+                                        <span asp-validation-for="AModel.FirstName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label" asp-for="AModel.LastName">Last Name</label>
+                                        <input type="Text" asp-for="AModel.LastName" class="form-control" />
+                                        <span asp-validation-for="AModel.LastName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                              <!-- Gender//NRIC input -->
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="col-form-label" asp-for="AModel.Gender"></label></br>
+                                        <div class="col-sm-10 d-flex align-items-center">
+                                            <div class="form-check form-check-inline">
+                                                @Html.RadioButtonFor(m => m.AModel.Gender, "Male",
+                                                new {@class = "form-check-input"})
+                                                <label class="form-check-label">Male</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                @Html.RadioButtonFor(m => m.AModel.Gender, "Female",
+                                                new {@class = "form-check-input"})
+                                                <label class="form-check-label">Female</label>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <span asp-validation-for="AModel.Gender" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label" asp-for="AModel.NRIC">NRIC</label>
+                                        <input type="Text" asp-for="AModel.NRIC" class="form-control" />
+                                        <span asp-validation-for="AModel.NRIC" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <label class="form-label" asp-for="AModel.Email">Email Address</label>
+                                <input type="Text" asp-for="AModel.Email" class="form-control" />
+                                <span asp-validation-for="AModel.Email" class="text-danger"></span>
+                            </div>
+
+                   
+                            <!-- Password input -->
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label" asp-for="AModel.Password">Password</label>
+                                        <input type="Text" asp-for="AModel.Password" class="form-control" />
+                                        <span asp-validation-for="AModel.Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label" asp-for="AModel.ConfirmPassword">Confirm Password</label>
+                                        <input type="Text" asp-for="AModel.ConfirmPassword" class="form-control" />
+                                        <span asp-validation-for="AModel.ConfirmPassword" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- DateofBirth/Resume input -->
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label" asp-for="AModel.DateOfBirth">Date of Birth</label>
+                                        <input asp-for="AModel.DateOfBirth" class="form-control" />
+                                        <span asp-validation-for="AModel.DateOfBirth" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label asp-for="AModel.Resume">Choose a file to upload Resume:</label><br />
+                                        <input type="file" class="form-control" name="file" asp-for="AModel.Resume" accept=".pdf,.docx">
+                                        <span asp-validation-for="AModel.Resume" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                    
+
+                            <!-- WhoAmI input -->
+                            <div class="form-outline mb-4">
+                                <label class="form-label" asp-for="AModel.WhoamI">WhoamI</label>
+
+                                <textarea asp-for="AModel.WhoamI" class="form-control rounded-0" rows="3"></textarea>
+                                <span asp-validation-for="AModel.WhoamI" class="text-danger"></span>
+                            </div>
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary  btn-block mb-4">Register</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+
